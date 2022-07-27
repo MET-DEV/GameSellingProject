@@ -15,7 +15,9 @@ namespace GameSell.Domain.Models
         public double Price { get; set; }
         public DateTime CreationDate { get; set; }
         public string Company { get; set; }
-        
+        public int GameCategoryId { get; set; }
+        public GameCategory? GameCategory { get; set; }
+
 
 
     }

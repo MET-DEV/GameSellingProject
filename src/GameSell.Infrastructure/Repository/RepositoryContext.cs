@@ -17,5 +17,14 @@ namespace GameSell.Infrastructure.Repository
 
         }
         public DbSet<Game> Games{ get; set; }
+        public DbSet<GameCategory> GameCategories { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Game>()
+                 .HasOne<GameCategory>(game => game.GameCategory)
+                 .WithMany(category => category.Games)
+                 .HasForeignKey(game => game.GameCategoryId);
+        }
+
     }
 }

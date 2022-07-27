@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameSell.Application.Repository
 {
-    public interface IGameRepository:IRepositoryBase<Game>
+    public interface IGameCategoryRepository:IRepositoryBase<GameCategory>
     {
-        Task<List<Game>> GetAllWithCategory();
     }
 }
