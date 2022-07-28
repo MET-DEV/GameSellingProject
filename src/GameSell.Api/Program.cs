@@ -1,5 +1,7 @@
 using GameSell.Application.Repository;
+using GameSell.Application.Service.Interfaces;
 using GameSell.Infrastructure.Repository;
+using GameSell.Infrastructure.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IGameRepository, GameRepository>();
+builder.Services.AddSingleton<IGameService, GameService>();
+
 builder.Services.AddSingleton<IGameCategoryRepository, GameCategoryRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
