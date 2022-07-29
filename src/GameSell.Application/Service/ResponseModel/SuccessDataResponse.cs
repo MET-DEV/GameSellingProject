@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace GameSell.Application.Service.ResponseModel
 {
-    public class SuccessDataResponse<T>:Response
+    public class SuccessDataResponse<T>:DataResponse<T>
     {
-        public bool Status { get; set; }
-
-
-        public string Message { get; set; }
-        public T Data { get; set; }
-        
-        public SuccessDataResponse(bool status, string message, T data)
+        public SuccessDataResponse(string message, T data) :base(true,message,data)
         {
-            Status = status;
-            Message = message;
-            Data = data;
+           
         }
     }
 }

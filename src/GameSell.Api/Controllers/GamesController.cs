@@ -23,7 +23,7 @@ namespace GameSell.Api.Controllers
             _gameService = gameService;
         }
         [HttpGet]
-        public async Task<Response> GetGames()
+        public async Task<DataResponse<List<Game>>> GetGames()
         {
             return await _gameService.GetGamesWithDetails();
         }

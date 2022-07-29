@@ -10,8 +10,8 @@ namespace GameSell.Application.Service.Interfaces
 {
     public interface IGameService
     {
-        Task<Response> GetGamesWithDetails();
-        Task<Response> GetAll();
+        Task<DataResponse<List<Game>>> GetGamesWithDetails();
+        Task<DataResponse<List<Game>>> GetAll();
         Task<Response> GetById(int id);
         Task<Response> Add(Game game);
         Task<Response> Update(Game game);

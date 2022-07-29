@@ -22,18 +22,18 @@ namespace GameSell.Infrastructure.Service
         public async Task<Response> Add(Game game)
         {
             await _gameRepository.Add(game);
-            return new SuccessResponse(true,"Game Added");
+            return new SuccessResponse("Game Added");
         }
 
         public async Task<Response> Delete(Game game)
         {
             await _gameRepository.Delete(game);
-            return new SuccessResponse(true,"Game Deleted");
+            return new SuccessResponse("Game Deleted");
         }
 
-        public async Task<Response> GetAll()
+        public async Task<DataResponse<List<Game>>> GetAll()
         {
-            return new SuccessDataResponse<Task<List<Game>>>(true,"Games Listed",_gameRepository.GetAll());
+            return  new SuccessDataResponse<List<Game>>("Games Listed",await _gameRepository.GetAll());
         }
 
         public Task<Response> GetById(int id)
@@ -41,15 +41,17 @@ namespace GameSell.Infrastructure.Service
             throw new NotImplementedException();
         }
 
-        public async Task<Response> GetGamesWithDetails()
+        public async Task<DataResponse<List<Game>>> GetGamesWithDetails()
         {
-            return  new SuccessDataResponse<Task<List<Game>>>(true, "Games Listed With Detail", _gameRepository.GetAllWithCategory());
+            return new SuccessDataResponse<List<Game>>("Selam",await _gameRepository.GetAllWithCategory());
         }
 
         public async Task<Response> Update(Game game)
         {
             await _gameRepository.Update(game);
-            return new SuccessResponse(true,"Game Updated");
+            return new SuccessResponse("Game Updated");
         }
+
+        
     }
 }

@@ -8,15 +8,10 @@ namespace GameSell.Application.Service.ResponseModel
 {
     public class ErrorResponse:Response
     {
-        public bool Status { get; set; }
-
-        
-
-        public string Message { get; set; }
-        public ErrorResponse(bool status, string message)
+       
+        public ErrorResponse(string message):base(false, message)
         {
-            Status = status;
-            Message = message;
+            
         }
     }
 }

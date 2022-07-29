@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameSell.Application.Service.ResponseModel
 {
-    public class ErrorDataResponse<T>:Response
+    public class ErrorDataResponse<T>:DataResponse<T>
     {
-        public bool Status { get; set; }
-
-
-        public string Message { get; set; }
-        public T Data { get; set; }
-        public ErrorDataResponse(bool status, string message, T data)
+        
+        public ErrorDataResponse(string message, T data):base(false,message,data)
         {
-            Status = status;
-            Message = message;
-            Data = data;
+
         }
     }
 }
