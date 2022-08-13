@@ -12,6 +12,8 @@ builder.Services.AddSingleton<IGameRepository, GameRepository>();
 builder.Services.AddSingleton<IGameService, GameService>();
 
 builder.Services.AddSingleton<IGameCategoryRepository, GameCategoryRepository>();
+builder.Services.AddSingleton<IGameCategoryService, GameCategoryService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

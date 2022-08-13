@@ -1,14 +1,13 @@
-﻿using GameSell.Domain.SeedWork;
+﻿using GameSell.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace GameSell.Domain.Models
+namespace GameSell.Domain.Dtos
 {
-    public class Game:BaseEntity
+    public class GameAddDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,9 +16,7 @@ namespace GameSell.Domain.Models
         public DateTime CreationDate { get; set; }
         public string Company { get; set; }
         public int GameCategoryId { get; set; }
-        public GameCategory? GameCategory { get; set; }
-
-
-
+        
     }
+
 }

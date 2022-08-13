@@ -10,8 +10,8 @@ namespace GameSell.Application.Service.Interfaces
 {
     public interface IGameCategoryService
     {
-        Task<DataResponse<List<GameCategory>>> GetAllGameCategory();
-        Task<DataResponse<List<GameCategory>>> GetAllGameCategoryWithDetails();
+        Task<DataResponse<List<GameCategory>>> GetAll();
+        Task<DataResponse<GameCategory>> GetById(int id);
         Task<Response> Add(GameCategory gameCategory);
         Task<Response> Delete(GameCategory gameCategory);
         Task<Response> Update(GameCategory gameCategory);

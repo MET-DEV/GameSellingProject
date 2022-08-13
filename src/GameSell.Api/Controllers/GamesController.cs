@@ -1,6 +1,7 @@
 ﻿using GameSell.Application.Repository;
 using GameSell.Application.Service.Interfaces;
 using GameSell.Application.Service.ResponseModel;
+using GameSell.Domain.Dtos;
 using GameSell.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,16 +28,26 @@ namespace GameSell.Api.Controllers
         {
             return await _gameService.GetGamesWithDetails();
         }
-        [HttpPost("/game")]
-        public async Task<Response> AddGame(Game game)
+        [HttpGet("/getById")]
+        public async  Task<DataResponse<Game>> GetById(int id)
         {
-            return await _gameService.Add(game);
+            return await _gameService.GetById(id);
         }
-        [HttpPost("/gamecategory")]
-        public async Task<int> AddGameCategory(GameCategory gameCategory) 
-        { 
-            
-            return await gameCategoryRepository.Add(gameCategory); 
+        [HttpPost]
+        public async Task<Response> AddGame(GameAddDto gameAddDto)
+        {
+            return await _gameService.Add(gameAddDto);
         }
+        [HttpDelete]
+        public async Task<Response> DeleteGame(Game game)
+        {
+            return await _gameService.Delete(game);
+        }
+        [HttpPatch]
+        public async Task<Response> UpdateGame(Game game)
+        {
+            return await _gameService.Update(game);
+        }
+       
     }
 }

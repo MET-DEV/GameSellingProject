@@ -1,6 +1,7 @@
 ﻿using GameSell.Application.Repository;
 using GameSell.Application.Service.Interfaces;
 using GameSell.Application.Service.ResponseModel;
+using GameSell.Domain.Dtos;
 using GameSell.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,9 @@ namespace GameSell.Infrastructure.Service
             _gameRepository = gameRepository;
         }
 
-        public async Task<Response> Add(Game game)
+        public async Task<Response> Add(GameAddDto gameAddDto)
         {
+            Game game = GameAddDtoToGame(gameAddDto);
             await _gameRepository.Add(game);
             return new SuccessResponse("Game Added");
         }
@@ -36,14 +38,14 @@ namespace GameSell.Infrastructure.Service
             return  new SuccessDataResponse<List<Game>>("Games Listed",await _gameRepository.GetAll());
         }
 
-        public Task<Response> GetById(int id)
+        public async Task<DataResponse<Game>> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResponse<Game>("Game listed with id", await _gameRepository.Get(g => g.Id == id));
         }
 
         public async Task<DataResponse<List<Game>>> GetGamesWithDetails()
         {
-            return new SuccessDataResponse<List<Game>>("Selam",await _gameRepository.GetAllWithCategory());
+            return new SuccessDataResponse<List<Game>>("Game listed with details",await _gameRepository.GetAllWithCategory());
         }
 
         public async Task<Response> Update(Game game)
@@ -52,6 +54,21 @@ namespace GameSell.Infrastructure.Service
             return new SuccessResponse("Game Updated");
         }
 
-        
+
+
+        private Game GameAddDtoToGame(GameAddDto gameAddDto)
+        {
+            Game game = new Game();
+            game.Id = gameAddDto.Id;
+            game.Name = gameAddDto.Name;
+            game.Price = gameAddDto.Price;
+            game.Description = gameAddDto.Description;
+            game.CreationDate = DateTime.Now;
+            game.GameCategoryId = gameAddDto.GameCategoryId;
+            game.Company = gameAddDto.Company;
+            return game;
+        }
+
+
     }
 }

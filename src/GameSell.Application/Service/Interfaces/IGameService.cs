@@ -1,4 +1,5 @@
 ﻿using GameSell.Application.Service.ResponseModel;
+using GameSell.Domain.Dtos;
 using GameSell.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,8 @@ namespace GameSell.Application.Service.Interfaces
     {
         Task<DataResponse<List<Game>>> GetGamesWithDetails();
         Task<DataResponse<List<Game>>> GetAll();
-        Task<Response> GetById(int id);
-        Task<Response> Add(Game game);
+        Task<DataResponse<Game>> GetById(int id);
+        Task<Response> Add(GameAddDto gameAddDto);
         Task<Response> Update(Game game);
         Task<Response> Delete(Game game);
     }
